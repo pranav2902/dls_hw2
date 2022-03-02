@@ -1,15 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=job_wgpu
-#SBATCH --open-mode=append
-#SBATCH --output=./%j_%x.out
-#SBATCH --error=./%j_%x.err
-#SBATCH --export=ALL
+#SBATCH --job-name=training
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=4
+#SBATCH --output=%x.out
+#SBATCH --mem=32GB
 #SBATCH --time=4:00:00
 #SBATCH --gres=gpu:1
-#SBATCH --mem=64G
-#SBATCH -c 4
 
-singularity exec --nv --overlay $SCRATCH/overlay-25GB-500K.ext3:ro /scratch/work/public/singularity/cuda10.1-cudnn7-devel-ubuntu18.04-20201207.sif /bin/bash -c "
-source /ext3/env.sh
-conda activate
-python ./test_gpu.py
+module purge
+module load anaconda3/2020.07
+eval "$(conda shell.bash hook)"
+conda activate env_name
+cd <path_to_your_directory>
+
+python DLSQ4.py
