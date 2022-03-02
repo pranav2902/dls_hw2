@@ -11,6 +11,6 @@ module purge
 module load anaconda3/2020.07
 eval "$(conda shell.bash hook)"
 conda activate env_name
-cd <path_to_your_directory>
+cd /scratch/pag9901
 
 python DLSQ4.py
