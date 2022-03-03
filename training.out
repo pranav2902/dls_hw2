@@ -1,0 +1,7 @@
+Could not find conda environment: env_name
+You can list all discoverable environments with `conda info --envs`.
+
+  File "DLSQ4.py", line 7
+    <!DOCTYPE html>
+    ^
+SyntaxError: invalid syntax
